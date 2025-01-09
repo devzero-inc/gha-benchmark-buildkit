@@ -17,3 +17,13 @@ jobs:
           git clone https://github.com/moby/buildkit --depth=1
           cd buildkit
           make binaries
+
+  build-with-devzero-hosted-runner:
+    name: Build with DevZero hosted runners
+    runs-on: devzero-ubuntu-24.04
+    steps:
+      - name: Clone buildkit and make binaries
+        run: |
+          git clone https://github.com/moby/buildkit --depth=1
+          cd buildkit
+          make binaries
