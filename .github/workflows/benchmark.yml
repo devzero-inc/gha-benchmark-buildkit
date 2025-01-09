@@ -1,0 +1,19 @@
+name: Benchmark
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    # https://crontab.guru/#*/5_*/12_*_*_*
+    - cron: "*/5 */12 * * *" 
+    
+
+jobs:
+  build-with-github-hosted-runner:
+    name: Build with GitHub hosted runners
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Clone buildkit and make binaries
+        run: |
+          git clone https://github.com/moby/buildkit --depth=1
+          cd buildkit
+          make binaries
