@@ -27,3 +27,13 @@ jobs:
           git clone https://github.com/moby/buildkit --depth=1
           cd buildkit
           make binaries
+  
+  build-with-self-hosted-vm-runner:
+    name: Build with self hosted vm runners
+    runs-on: self-hosted-vm
+    steps:
+      - name: Clone buildkit and make binaries
+        run: |
+          git clone https://github.com/moby/buildkit --depth=1
+          cd buildkit
+          make binaries
