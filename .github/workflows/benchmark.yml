@@ -34,6 +34,7 @@ jobs:
     steps:
       - name: Clone buildkit and make binaries
         run: |
+          rm -rf buildkit  # Remove existing directory if it exists
           git clone https://github.com/moby/buildkit --depth=1
           cd buildkit
           make binaries
