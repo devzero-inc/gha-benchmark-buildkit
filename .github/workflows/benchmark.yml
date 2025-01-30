@@ -38,3 +38,14 @@ jobs:
           git clone https://github.com/moby/buildkit --depth=1
           cd buildkit
           make binaries
+
+
+  build-with-lab-overlay:
+    name: Build with lab overlaybd
+    runs-on: devzero-ubuntu-24.04-lab
+    steps:
+      - name: Clone buildkit and make binaries
+        run: |
+          git clone https://github.com/moby/buildkit --depth=1
+          cd buildkit
+          make binaries
