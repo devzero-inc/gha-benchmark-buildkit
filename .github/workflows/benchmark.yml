@@ -49,3 +49,12 @@ jobs:
           git clone https://github.com/moby/buildkit --depth=1
           cd buildkit
           make binaries
+  build-with-lab-kata-overlayfs:
+    name: Build with lab kata overlayfs
+    runs-on: devzero-ubuntu-24.04-lab-kata-overlayfs
+    steps:
+      - name: Clone buildkit and make binaries
+        run: |
+          git clone https://github.com/moby/buildkit --depth=1
+          cd buildkit
+          make binaries
