@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ matrix:runner }}
+    runs-on: ${{ matrix.runner }}
     strategy:
       matrix:
         runner:
@@ -19,7 +19,7 @@ jobs:
         - devzero-ubuntu-24.04-lab-kata-overlayfs
         - devzero-ubuntu-24.04-sysbox
     steps:
-      - name: ${{ matrix:runner }}
+      - name: ${{ matrix.runner }}
         run: |
           git clone https://github.com/moby/buildkit --depth=1
           cd buildkit
