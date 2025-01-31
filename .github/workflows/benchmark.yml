@@ -5,55 +5,21 @@ on:
   schedule:
     # https://crontab.guru/#*/5_*/12_*_*_*
     - cron: "*/5 */12 * * *" 
-    
+
+
 
 jobs:
-  build-with-github-hosted-runner:
-    name: Build with GitHub hosted runners
-    runs-on: ubuntu-22.04
+  build:
+    runs-on: ${{ matrix:runner }}
+    strategy:
+      matrix:
+        runner:
+        - devzero-ubuntu-24.04
+        - devzero-ubuntu-24.04-lab
+        - devzero-ubuntu-24.04-lab-kata-overlayfs
+        - devzero-ubuntu-24.04-sysbox
     steps:
-      - name: Clone buildkit and make binaries
-        run: |
-          git clone https://github.com/moby/buildkit --depth=1
-          cd buildkit
-          make binaries
-
-  build-with-devzero-hosted-runner:
-    name: Build with DevZero hosted runners
-    runs-on: devzero-ubuntu-24.04
-    steps:
-      - name: Clone buildkit and make binaries
-        run: |
-          git clone https://github.com/moby/buildkit --depth=1
-          cd buildkit
-          make binaries
-  
-  build-with-self-hosted-vm-runner:
-    name: Build with self hosted vm runners
-    runs-on: self-hosted-vm
-    steps:
-      - name: Clone buildkit and make binaries
-        run: |
-          rm -rf buildkit  # Remove existing directory if it exists
-          git clone https://github.com/moby/buildkit --depth=1
-          cd buildkit
-          make binaries
-
-
-  build-with-lab-overlay:
-    name: Build with lab overlaybd
-    runs-on: devzero-ubuntu-24.04-lab
-    steps:
-      - name: Clone buildkit and make binaries
-        run: |
-          git clone https://github.com/moby/buildkit --depth=1
-          cd buildkit
-          make binaries
-  build-with-lab-kata-overlayfs:
-    name: Build with lab kata overlayfs
-    runs-on: devzero-ubuntu-24.04-lab-kata-overlayfs
-    steps:
-      - name: Clone buildkit and make binaries
+      - name: ${{ matrix:runner }}
         run: |
           git clone https://github.com/moby/buildkit --depth=1
           cd buildkit
