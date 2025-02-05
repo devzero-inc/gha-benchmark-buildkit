@@ -4,7 +4,7 @@ on:
   workflow_dispatch: {}
   schedule:
     # https://crontab.guru/#*/5_*/12_*_*_*
-    - cron: "*/5 */12 * * *" 
+    - cron: "*/5 */12 * * *"
 
 
 
@@ -17,7 +17,8 @@ jobs:
         - devzero-ubuntu-24.04
         - devzero-ubuntu-24.04-lab
         - devzero-ubuntu-24.04-lab-kata-overlayfs
-        - devzero-ubuntu-24.04-sysbox
+        - devzero-ubuntu-24.04-bare-metal
+        - ubuntu-latest
     steps:
       - name: ${{ matrix.runner }}
         run: |
