@@ -3,8 +3,8 @@ name: Benchmark
 on:
   workflow_dispatch: {}
   schedule:
-    # https://crontab.guru/#*/5_*/12_*_*_*
-    - cron: "*/5 */12 * * *" 
+    # https://crontab.guru/#1_*/11_*_*_*
+    - cron: "1 */11 * * *" 
     
 
 jobs:
@@ -24,17 +24,6 @@ jobs:
     steps:
       - name: Clone buildkit and make binaries
         run: |
-          git clone https://github.com/moby/buildkit --depth=1
-          cd buildkit
-          make binaries
-  
-  build-with-self-hosted-vm-runner:
-    name: Build with self hosted vm runners
-    runs-on: self-hosted-vm
-    steps:
-      - name: Clone buildkit and make binaries
-        run: |
-          rm -rf buildkit  # Remove existing directory if it exists
           git clone https://github.com/moby/buildkit --depth=1
           cd buildkit
           make binaries
