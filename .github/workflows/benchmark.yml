@@ -2,9 +2,6 @@ name: Benchmark
 
 on:
   workflow_dispatch: {}
-  schedule:
-    # https://crontab.guru/#1_*/11_*_*_*
-    - cron: "1 */11 * * *" 
     
 
 jobs:
